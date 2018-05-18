@@ -1,11 +1,13 @@
+
+#тут содержание композ файла
 nginx:
  image: nginx:1.13
  container_name: nginx_container_1
  ports:
-  - "80:80"
+  - 80:80
  command: /bin/bash
-
 
 #httpd:
 # image: httpd:2.4
+
 
