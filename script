@@ -1,0 +1,27 @@
+#!/bin/bash
+
+. ./config
+
+#ставим докер
+apt-get update
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+apt-get update
+apt-get -y install docker-ce
+
+
+#ставим docker-compose
+apt-get -y install python-pip
+pip install docker-compose
+
+#создаем docker-compose.yml
+
+echo "
+#тут содержание композ файла
+"
+
+#запускаем докер-композ
+cd /workdir
+docker-compose up -d
+
+
