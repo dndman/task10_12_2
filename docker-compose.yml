@@ -4,10 +4,24 @@ nginx:
  image: nginx:1.13
  container_name: nginx_container_1
  ports:
-  - 80:80
- command: /bin/bash
+  - 8080:80
+# links:
+#  - httpd
+# networks:
+#  - dockerbridge
+
+# command: /bin/bash
 
 #httpd:
 # image: httpd:2.4
+# container_name: httpd_container_1
+# ports:
+#  - 80
+# links:
+#  - nginx
+# networks:
+#  - dockerbridge
+
+
 
 

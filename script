@@ -9,6 +9,11 @@ add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(
 apt-get update
 apt-get -y install docker-ce
 
+#ставим bridge-utils
+#apt-get -y install bridge-utils
+#echo "
+#auto dockerbridge
+
 
 #ставим docker-compose
 apt-get -y install python-pip
@@ -20,15 +25,31 @@ echo "
 #тут содержание композ файла
 nginx:
  image: nginx:1.13
+#тут потом будут прикручиваемые извне конфиги
+#volumes 
  container_name: nginx_container_1
  ports:
-  - "80:80"
- command: /bin/bash
+  - "80:8080"
+ links:
+  - httpd
+# networks:
+#  - dockerbridge
 
-#httpd:
-# image: httpd:2.4
+# command: /bin/bash
 
-" >> docker-compose.yml
+httpd:
+ image: httpd:2.4
+ container_name: httpd_container_1
+ ports:
+  - 80
+# links:
+#  - nginx
+# networks:
+#  - dockerbridge
+
+
+
+" > docker-compose.yml
 
 #запускаем докер-композ
 #cd /workdir
