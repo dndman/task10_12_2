@@ -2,30 +2,31 @@
 
 . ./config
 
-#ставим докер
+#all environment will be some later, after the main job will work
+#installing docker
 apt-get update
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 apt-get update
 apt-get -y install docker-ce
 
-#ставим bridge-utils
+#installing bridge-utils(i dont care if it not need. just so)
 #apt-get -y install bridge-utils
 #echo "
 #auto dockerbridge
 
 
-#ставим docker-compose
+#installing docker-compose
 apt-get -y install python-pip
 pip install docker-compose
 
-#создаем docker-compose.yml
+#making docker-compose.yml
 
 echo "
-#тут содержание композ файла
+#compose file here
 nginx:
  image: nginx:1.13
-#тут потом будут прикручиваемые извне конфиги
+#volumes are mounting here
 #volumes 
  container_name: nginx_container_1
  ports:
@@ -51,8 +52,8 @@ httpd:
 
 " > docker-compose.yml
 
-#запускаем докер-композ
-#cd /workdir
+#launch docker-compose
+#cd /workdir in future there will be a correct way to working dir
 docker-compose up -d
 
 
