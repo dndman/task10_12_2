@@ -17,8 +17,10 @@ apt-get -y install docker-ce
 
 
 #installing docker-compose
-apt-get -y install python-pip
-pip install docker-compose
+#apt-get -y install python-pip
+#pip install docker-compose
+curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
 
 #making docker-compose.yml
 
@@ -30,7 +32,7 @@ nginx:
 #volumes 
  container_name: nginx_container_1
  ports:
-  - "80:8080"
+  - \"80:8080\"
  links:
   - httpd
 # networks:
