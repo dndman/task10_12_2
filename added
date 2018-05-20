@@ -1,6 +1,11 @@
 #!/bin/bash
 
 
+echo "
+[SAN]
+ subjectAltName=IP:${ADDR}
+" > /tmp/oneused
+
 
 
 #герерация ключа
