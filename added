@@ -32,24 +32,4 @@ openssl x509 -req -in /etc/ssl/certs/web.csr -CA /etc/ssl/certs/root-ca.crt -CAk
 cat /etc/ssl/certs/web.crt  /etc/ssl/certs/root-ca.crt > /etc/ssl/certs/$(hostname -f).crt
 
 
-echo "
-server {
-    server_name $(hostname -f);
-    listen 443 ssl;
-    access_log /var/log/nginx/test.log;
-    error_log /var/log/nginx/test.log;
-
-     ssl_certificate     /etc/ssl/certs/$(hostname -f).crt;
-     ssl_certificate_key /etc/ssl/certs/selfCA.key;
-     ssl_protocols       TLSv1 TLSv1.1 TLSv1.2;
-     ssl_ciphers         HIGH:!aNULL:!MD5;
-
-    location / {
-        proxy_pass       http://$APACHE_VLAN_IP:80;
-        proxy_set_header Host      $(hostname -f);
-        proxy_set_header X-Real-IP $ADDR;
-    }
-}
-
-" > config
 
