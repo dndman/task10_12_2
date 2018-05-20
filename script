@@ -34,7 +34,7 @@ echo "
 server {
 
     server_name $(hostname -f);
-    listen $NGINX_PORT;
+#    listen $NGINX_PORT;
     listen 443 ssl;
     access_log /var/log/nginx/access.log;
     error_log /var/log/nginx/error.log;
@@ -67,8 +67,8 @@ services:
   proxy:
     image: $NGINX_IMAGE
     ports:
-      - \"$NGINX_PORT:$NGINX_PORT\" 
-      - \"443:443\"
+#      - \"$NGINX_PORT:$NGINX_PORT\" 
+      - \"$NGINX_PORT:443\"
     volumes:
       - /etc/nginx/conf/nginx.conf:/etc/nginx/conf.d/default.conf:ro
       - /var/log/nginx/access.log:/var/log/nginx/access.log
