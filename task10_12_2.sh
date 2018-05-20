@@ -72,7 +72,7 @@ services:
     volumes:
       - /etc/nginx/conf/nginx.conf:/etc/nginx/conf.d/default.conf:ro
       - /var/log/nginx/:/var/log/nginx/
-      - /etc/ssl/certs/$(hostname -f).crt:etc/ssl/certs/$(hostname -f).crt
+      - /etc/ssl/certs/$(hostname -f).crt:/etc/ssl/certs/$(hostname -f).crt
       - /etc/ssl/certs/selfCA.key:/etc/ssl/certs/selfCA.key
 
 
