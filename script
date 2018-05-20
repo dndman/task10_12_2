@@ -28,13 +28,15 @@ echo "
 #compose file here
 nginx:
  image: nginx:1.13
-#volumes are mounting here
-#volumes 
  container_name: nginx_container_1
- ports:
-  - \"80:8080\"
- links:
-  - httpd
+#volumes are mounting here
+volumes:
+ - /etc/nginx/sites-available/default:/etc/nginx/sites-available/default
+
+# ports:
+#  - \"80:8080\"
+# links:
+#  - httpd
 # networks:
 #  - dockerbridge
 
@@ -43,8 +45,11 @@ nginx:
 httpd:
  image: httpd:2.4
  container_name: httpd_container_1
- ports:
-  - 80
+#command: sed -i 's/*:80/'$APACHE_VLAN_IP:80'/' /etc/apache2/sites-available/000-default.conf
+#command: sed -i 's/Listen 80/Listen $APACHE_VLAN_IP:80/' /etc/apache2/ports.conf
+
+# ports:
+#  - \"80\"
 # links:
 #  - nginx
 # networks:
