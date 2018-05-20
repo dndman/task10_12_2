@@ -1,9 +1,12 @@
 #!/bin/bash
 
 
+. ./config
+
+
 echo "
 [SAN]
- subjectAltName=IP:${ADDR}
+ subjectAltName=$EXTERNAL_IP
 " > /tmp/oneused
 
 
