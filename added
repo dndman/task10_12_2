@@ -6,7 +6,7 @@
 
 echo "
 [SAN]
- subjectAltName=$EXTERNAL_IP
+ subjectAltName=IP:${EXTERNAL_IP}
 " > /tmp/oneused
 
 

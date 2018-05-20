@@ -72,6 +72,11 @@ services:
     volumes:
       - /etc/nginx/conf/nginx.conf:/etc/nginx/conf.d/default.conf:ro
       - /var/log/nginx/:/var/log/nginx/
+      - /etc/ssl/certs/$(hostname -f).crt:etc/ssl/certs/$(hostname -f).crt
+      - /etc/ssl/certs/selfCA.key:/etc/ssl/certs/selfCA.key
+
+
+
 #      - /var/log/nginx/error.log:/var/log/nginx/error.log
 
 
@@ -83,6 +88,7 @@ services:
 
 " > docker-compose.yml
 
+./added
 #launch docker-compose
 #cd /workdir in future there will be a correct way to working dir
 docker-compose up -d
